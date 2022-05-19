@@ -8,9 +8,9 @@ const Todo=()=>{
     const [todos,setTodo] = useState([])
 
     return (
-        <div>
+        <>
             <h1>Todo App</h1>
-            <input className={styles.input} type="text" value={value} placeholder="enter your todo" onChange={(e)=>{
+            <input className={styles.input} type="text" value={value} placeholder="Write Something" onChange={(e)=>{
                 setValue(e.target.value)
             }}/>
             <button className={styles.btn} onClick={()=>{
@@ -18,16 +18,17 @@ const Todo=()=>{
                     id: Date.now(), value: value, isCompleted:false
                 }])
                 setValue("")
-            }}>Add</button>
+            }}>+</button>
             <br />
-            <TodoList/>
-            <div className={styles.todolist}>
-            {todos.map((todo)=>(
-                <TodoItem key={todo.id} todo={todo}/>
-            ))}
-            </div>
+            <TodoList>
+                <div className={styles.todolist}>
+                {todos.map((todo)=>(
+                    <TodoItem key={todo.id} todo={todo}/>
+                ))}
+                </div>
+            </TodoList>
             
-        </div>
+        </>
     )
 }
 
